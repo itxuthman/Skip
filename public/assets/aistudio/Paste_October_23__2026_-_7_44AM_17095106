@@ -1,0 +1,676 @@
+MASTER UPGRADE PROMPT: COMPLETE UNIVERSITY MANAGEMENT SYSTEM — ALL ROLES, RESPONSIBILITIES, ADMIN CONTROL, AND OPEN USER REGISTRATION
+
+Act as a senior university ERP architect, full-stack software engineer, database designer, academic systems specialist, UI/UX designer, and application security expert.
+
+Upgrade the existing School Management System into a complete, modern, professional University Management System (UMS) suitable for universities and other higher institutions in Nigeria.
+
+The application must support undergraduate and postgraduate programmes, faculties, departments, academic sessions, semesters, course registration, examinations, results, CGPA, transcripts, admissions, finance, staff, library, hostel, e-learning, student affairs, and university administration.
+
+IMPORTANT: Preserve all working features from the existing project. Extend and improve the software without unnecessarily deleting, breaking, or replacing existing functionality.
+
+1. AUTHENTICATION AND REGISTRATION RULES
+
+Implement the following exact authentication policy.
+
+Admin login
+
+- The Admin must have a dedicated login page.
+- Admin accounts must be created securely through a protected initial setup process or secure database seeding.
+- Do not provide unrestricted public Admin registration.
+- Admin must log in with authorized credentials.
+- Admin must have full system-management authority across the entire university software.
+- Require strong password policies and secure session management.
+- Support optional two-factor authentication.
+- Provide secure password reset and account recovery.
+
+Registration for every other role
+
+Create a public registration page for all non-admin user categories.
+
+Registration options must include:
+
+- Student
+- Lecturer / Academic Staff
+- Non-Academic Staff
+- Parent / Guardian
+- Applicant
+- Other approved university user categories
+
+If a user already has an account, display a clear “Already have an account? Login” link.
+
+If the user does not have an account, display a “Create Account / Register” option.
+
+During registration:
+
+- Ask for the information required for the selected user category.
+- Validate email, phone number, password, and other required fields.
+- Prevent duplicate accounts.
+- Verify email or phone when a verification provider is configured.
+- Save the registration securely.
+- Display registration status and next steps.
+- Create the correct user profile and role association.
+- Log registration activity.
+
+IMPORTANT SECURITY RULE: Public registration must never allow a person to become Admin by choosing an Admin role. New registrations must not receive privileged permissions automatically.
+
+Role activation and approval
+
+- Students may create an account, but access to official university records must depend on verified admission or an approved student record.
+- Applicants may register and submit admission applications.
+- Lecturers and staff may register, but privileged staff access must require approval by the Admin or an authorized office.
+- Parents must be linked to the correct student through a verified relationship or an authorized university process.
+- Users must not be able to select arbitrary student IDs, staff IDs, departments, or permissions to gain access.
+- Admin can approve, reject, suspend, reactivate, or deactivate user accounts.
+
+Login routing
+
+After login, route each user to the correct dashboard based on their assigned role and permissions.
+
+A student must never be routed to the lecturer or Admin dashboard unless separately authorized.
+
+2. ADMIN — FULL SYSTEM RESPONSIBILITY
+
+Admin is the highest-authority application user.
+
+Give Admin a dedicated, comprehensive dashboard and access to every module in the university software.
+
+Admin must be able to:
+
+A. University configuration
+
+- Set university name, logo, motto, address, contact details, website, academic calendar, timezone, currency, and official branding.
+- Configure academic sessions, semesters, terms, grading systems, assessment rules, and institutional policies.
+- Configure faculties, departments, schools, centres, institutes, campuses, and programmes.
+- Configure admission rules, student status categories, graduation requirements, and registration deadlines.
+
+B. Users and permissions
+
+- View all users and their account statuses.
+- Approve or reject registrations and staff access requests.
+- Create, edit, suspend, reactivate, and deactivate user accounts.
+- Assign roles and permissions.
+- Reset accounts securely and initiate password recovery.
+- Review login history and account activity.
+- Enforce least-privilege access and revoke inappropriate permissions.
+- Never display existing users' plaintext passwords.
+
+C. Complete academic administration
+
+- Create and manage faculties and departments.
+- Configure programmes, degree levels, course codes, credit units, prerequisites, and curricula.
+- Manage student admissions and matriculation.
+- Manage student enrolment, course registration, add/drop deadlines, and approval workflows.
+- Configure examinations, assessment weights, grading scales, GPA and CGPA calculation rules.
+- Review and authorize result publication workflows.
+- Manage graduation eligibility, clearance, and transcript requests.
+
+D. Finance and payments
+
+- Configure tuition and other charges.
+- Review invoices, payments, scholarships, waivers, refunds, and outstanding balances.
+- Review financial reports and audit logs.
+- Configure official payment gateway integrations.
+- Approve sensitive financial operations according to configured policies.
+- Prevent unauthorized changes to verified transactions.
+
+E. Staff and operations
+
+- Manage academic and non-academic staff.
+- Manage faculties, departments, job titles, staff assignments, and institutional responsibilities.
+- Configure payroll records if the payroll module is enabled.
+- Manage library, hostel, transport, inventory, procurement, and maintenance modules.
+- Manage university-wide announcements, notifications, events, and calendars.
+
+F. Reports and analytics
+
+- View university-wide statistics.
+- Generate academic, admissions, financial, attendance, staffing, and operational reports.
+- Export permitted reports to PDF, CSV, and Excel where supported.
+- Review audit logs and important changes.
+- View module activity and system health indicators.
+
+G. Platform maintenance
+
+- Manage application settings, integrations, feature toggles, backups, and maintenance notices.
+- Review errors and failed background jobs.
+- Configure supported email, SMS, storage, and payment providers.
+- Manage database backup and recovery procedures.
+- Monitor security events and suspicious activity.
+
+Admin authority safeguards
+
+Admin has full application-management authority, but sensitive operations must remain auditable.
+
+- Record who performed each sensitive action and when.
+- Require confirmation for destructive actions.
+- Prefer archive or soft-delete for important academic and financial records.
+- Do not allow permanent deletion of financial transactions or published academic history without a legally and institutionally appropriate correction process.
+- Never expose passwords, private API keys, or payment secrets to dashboard users.
+- Keep database backup and recovery procedures separate from ordinary user actions.
+
+3. COMPLETE RESPONSIBILITIES FOR EVERY ROLE
+
+Implement the following role responsibilities. All permissions must be enforced on the backend, not only hidden in the user interface.
+
+3.1 Applicant
+
+Responsibilities:
+
+- Register an account.
+- Complete personal and educational information.
+- Select preferred programme and entry route.
+- Upload required application documents.
+- Pay application fees through a verified payment integration if required.
+- Track application status.
+- Receive admission decisions and notifications.
+- Accept or decline an offer.
+- Download admission letters when authorized.
+- Convert to an admitted student profile after the official admission process is completed.
+
+Applicants must not access private records belonging to other applicants.
+
+3.2 Student
+
+Responsibilities:
+
+- Maintain permitted personal information.
+- View admission and matriculation details.
+- View faculty, department, programme, level, and academic adviser.
+- Register courses during authorized registration periods.
+- Add or drop courses where permitted.
+- View registered courses and credit units.
+- View class timetable and examination timetable.
+- Access assignments, learning materials, and announcements.
+- View published results, semester GPA, cumulative CGPA, and academic standing.
+- View invoices, payment receipts, scholarships, and outstanding balances.
+- Apply for hostel accommodation, deferment, leave of absence, change of programme, or other permitted student services.
+- Submit transcript, certificate, and clearance requests.
+- View attendance where the university enables it.
+- Track SIWES, internship, industrial training, and final-year project progress.
+- Receive official notifications.
+- Submit support tickets and authorized appeals.
+
+Students must not edit official results, change their CGPA, approve their own payments, or alter their academic history.
+
+3.3 Lecturer / Academic Staff
+
+Responsibilities:
+
+- Maintain an authorized staff profile.
+- View assigned courses and classes.
+- Access class lists for assigned courses.
+- Upload lecture notes, reading materials, and announcements.
+- Create assignments and configure deadlines.
+- Record attendance where enabled.
+- Enter continuous assessment and examination marks for assigned courses.
+- Save drafts and submit results for review.
+- View the status of result submissions.
+- Supervise assigned projects and SIWES placements where authorized.
+- Communicate with assigned students through approved channels.
+- View relevant teaching timetables and departmental notices.
+
+Lecturers may not publish or alter finalized results unless explicitly authorized by institutional policy. All score changes after submission must be logged and subject to an approved correction workflow.
+
+3.4 Head of Department / HOD
+
+Responsibilities:
+
+- View department-specific academic information.
+- Manage departmental course offerings within authorized limits.
+- Review course assignments and departmental teaching schedules.
+- Recommend lecturers for course assignments.
+- Review submitted results and departmental performance.
+- Verify course registration exceptions and academic progression requests.
+- Review project supervision assignments.
+- Review departmental graduation eligibility.
+- Generate departmental reports.
+- Recommend academic corrections through formal approval workflows.
+
+An HOD must not automatically gain access to unrelated departments or other faculties.
+
+3.5 Dean of Faculty
+
+Responsibilities:
+
+- Oversee authorized faculty departments.
+- Review faculty-wide academic performance.
+- Review departmental result approvals and exceptional cases.
+- Monitor staffing and course delivery.
+- Review curriculum and programme proposals.
+- Review faculty reports, academic appeals, and graduation eligibility.
+- Coordinate faculty meetings and announcements.
+- Submit recommendations to university management.
+
+A Dean's access must be restricted to their assigned faculty unless a higher permission is explicitly granted.
+
+3.6 Registrar / Admissions Officer
+
+Responsibilities:
+
+- Manage applications and admissions workflows.
+- Verify required admission documents.
+- Record admission decisions through authorized procedures.
+- Generate admission lists and admission letters.
+- Manage matriculation numbers and student registration records.
+- Maintain official student biodata.
+- Process approved transfers, deferments, withdrawals, and programme changes.
+- Maintain student academic status records.
+- Support official transcript, certificate, and clearance requests.
+- Generate admissions and registry reports.
+
+The Registrar must not bypass the configured approval process or alter published results without authorization.
+
+3.7 Bursar / Accountant
+
+Responsibilities:
+
+- Configure authorized fee schedules.
+- Generate invoices and student account statements.
+- Record and reconcile verified payments.
+- Manage approved scholarships, waivers, and refunds.
+- Track outstanding fees and arrears.
+- Manage approved expenditure and budget records.
+- Produce financial reports and reconciliation statements.
+- Review payment gateway settlement and transaction references.
+- Investigate failed, pending, or duplicated payment notifications.
+- Maintain audit trails for financial operations.
+
+Accountants must not alter examination results or gain access to unrelated confidential information.
+
+3.8 Departmental / Faculty Administrator
+
+Responsibilities:
+
+- Maintain authorized departmental records.
+- Assist with course allocation and timetable administration.
+- Manage approved departmental documents and notices.
+- Prepare departmental reports.
+- Process administrative requests.
+- Support course registration and result workflows within assigned permissions.
+
+3.9 Librarian
+
+Responsibilities:
+
+- Manage books, journals, digital resources, and library categories.
+- Register library items and track availability.
+- Issue and return books.
+- Manage reservations and renewals.
+- Track overdue items and authorized fines.
+- Manage library membership.
+- Generate borrowing and inventory reports.
+- Manage authorized digital resources.
+- Record library clearance status for graduation or withdrawal workflows.
+
+3.10 Hostel / Accommodation Officer
+
+Responsibilities:
+
+- Manage hostels, blocks, rooms, and bed spaces.
+- Configure accommodation capacity and fees.
+- Process accommodation applications.
+- Assign rooms according to approved rules.
+- Track occupancy, room changes, maintenance issues, and vacancies.
+- Generate accommodation lists and reports.
+- Update hostel clearance status.
+
+3.11 Examination Officer
+
+Responsibilities:
+
+- Configure examination schedules.
+- Allocate examination venues and permitted seating arrangements.
+- Coordinate examination timetables.
+- Monitor result submission deadlines.
+- Review result processing status.
+- Manage approved examination records and reports.
+- Record authorized examination incidents and corrections.
+- Support examination-board approval workflows.
+
+3.12 ICT / Technical Support Officer
+
+Responsibilities:
+
+- Handle approved technical support tickets.
+- Assist users with account access.
+- Monitor system availability and integration status.
+- Review permitted diagnostic logs.
+- Help configure institutional devices and supported integrations.
+- Escalate security incidents.
+
+ICT staff must not automatically receive access to student financial details, private academic records, or unrestricted impersonation powers.
+
+3.13 Parent / Sponsor
+
+Responsibilities:
+
+- Register and maintain an account.
+- Request verified linkage to a student.
+- View only linked students' permitted academic and financial summaries.
+- View published results and attendance where authorized.
+- View invoices and verified payment receipts.
+- Receive announcements and relevant notifications.
+- Contact authorized university offices.
+
+Parent access must not expose confidential student records without the necessary legal authority and institutional permission.
+
+3.14 University Management
+
+Responsibilities:
+
+- View authorized university-wide performance dashboards.
+- Review academic, admissions, finance, staffing, and operational reports.
+- Review policy proposals and strategic plans.
+- Monitor institutional KPIs.
+- Review approved budgets and departmental summaries.
+- Access management reports within assigned permissions.
+
+Management is a separate role from Admin. It must not receive unrestricted technical or security permissions by default.
+
+3.15 System Support and Other Approved Roles
+
+Support personnel and other roles must receive explicitly defined permissions. Do not give every staff account universal access.
+
+Allow Admin to configure additional roles and individual permissions.
+
+4. UNIVERSITY ACADEMIC STRUCTURE
+
+Replace school classes and terms as the main academic structure with a configurable university hierarchy:
+
+University → Campus → Faculty / School → Department → Programme → Level → Semester → Course.
+
+Support:
+
+- Undergraduate programmes.
+- Postgraduate diploma programmes.
+- Master's programmes.
+- Doctoral programmes.
+- Other institution-configured programmes.
+- Full-time and part-time study where applicable.
+- Multiple campuses.
+- Different academic calendars and course structures.
+
+Support Nigerian university academic terminology without hardcoding every institution to the same rules.
+
+5. ADDITIONAL UNIVERSITY MODULES
+
+Implement these modules with working forms, tables, search, filters, permissions, backend APIs, and database support.
+
+A. Admissions and matriculation
+
+- Application portal.
+- Admission requirements and document uploads.
+- Application review and decision workflows.
+- Admission lists.
+- Admission letter generation.
+- Matriculation number generation.
+- Student onboarding.
+
+B. Course registration
+
+- Course catalogue.
+- Course prerequisites.
+- Credit units.
+- Compulsory and elective courses.
+- Course add/drop workflow.
+- Registration deadlines.
+- Credit-unit limits.
+- Course registration slip.
+- Adviser and departmental approval where required.
+- Validation against programme curriculum and student status.
+
+C. Results, GPA, and CGPA
+
+- Continuous assessment and examination scores.
+- Configurable grading scales and grade points.
+- Semester GPA and cumulative CGPA.
+- Carryover and repeat-course tracking.
+- Academic standing and probation rules.
+- Result approval and publication.
+- Result amendment workflow with audit history.
+- Transcript generation based on verified records.
+
+Do not hardcode a universal grading system or CGPA formula. Make the institution's grading rules configurable and test the calculations carefully.
+
+D. Final-year projects and SIWES
+
+- Project topic proposals.
+- Supervisor assignment.
+- Progress tracking.
+- Meeting logs.
+- Project submission and assessment.
+- SIWES placement details.
+- Industrial training logbooks and reports.
+- Supervisor and departmental evaluations.
+
+E. Graduation and clearance
+
+- Departmental clearance.
+- Library clearance.
+- Finance clearance.
+- Hostel clearance.
+- Student affairs clearance.
+- Final graduation eligibility checks.
+- Graduation lists.
+- Transcript and certificate request workflows.
+
+F. E-learning and learning management
+
+- Course materials.
+- Assignments.
+- Submission deadlines.
+- Quizzes and assessments.
+- Course announcements.
+- Discussion areas where enabled.
+- Learning progress reports.
+- Optional video lessons using authorized providers.
+
+G. University finance
+
+- Tuition and other fees.
+- Student invoices.
+- Verified payments.
+- Receipts.
+- Scholarships and sponsorship.
+- Refund requests.
+- Financial reconciliation.
+- Budget and expenditure tracking.
+- Configurable payment integrations.
+
+H. Library and hostel
+
+- Library inventory and circulation.
+- Digital library resources.
+- Accommodation applications.
+- Hostel allocation.
+- Room capacity.
+- Hostel fees and clearance.
+- Maintenance requests.
+
+I. Staff management
+
+- Academic and non-academic staff profiles.
+- Departments and staff assignments.
+- Staff attendance and leave requests.
+- Teaching workload.
+- Staff appraisal workflows.
+- Optional payroll module with restricted access.
+
+J. Student affairs
+
+- Complaints and support tickets.
+- Student disciplinary case records with restricted permissions.
+- Scholarship applications.
+- Student clubs and societies.
+- Medical or welfare referral workflows using strict privacy permissions.
+- Student events and announcements.
+
+K. Timetable and examinations
+
+- Lecture timetable.
+- Examination timetable.
+- Venue allocation.
+- Conflict detection.
+- Course schedule changes.
+- Examination attendance.
+- Authorized incident reports.
+
+L. Research and postgraduate administration
+
+- Research proposal registration.
+- Supervisor assignment.
+- Research milestones.
+- Thesis and dissertation submissions.
+- Viva scheduling.
+- Examiner assignment.
+- Approval workflow.
+- Postgraduate progress tracking.
+
+M. University analytics
+
+- Student enrolment by faculty, department, and programme.
+- Admission trends.
+- Course registration statistics.
+- Academic performance trends.
+- Result submission status.
+- Graduation eligibility.
+- Financial collections and balances.
+- Staff workload.
+- Library and hostel occupancy.
+- Reports filtered by session, semester, faculty, department, and programme.
+
+6. ADMIN DASHBOARD DESIGN
+
+Build a dedicated premium Admin dashboard with:
+
+- Total students.
+- Total academic and non-academic staff.
+- Total applicants.
+- Faculties and departments.
+- Active programmes.
+- Current academic session and semester.
+- Course registration status.
+- Results awaiting approval.
+- Fees collected and outstanding balances.
+- Admissions overview.
+- Recent administrative activity.
+- User registrations awaiting approval.
+- System alerts and integration health.
+- Charts for academic, financial, admissions, and operational statistics.
+
+Add a comprehensive sidebar with:
+
+1. Overview
+2. User Management
+3. Roles and Permissions
+4. Admissions
+5. Faculties
+6. Departments
+7. Programmes
+8. Courses
+9. Students
+10. Academic Staff
+11. Non-Academic Staff
+12. Course Registration
+13. Timetable
+14. Attendance
+15. Examinations
+16. Results and CGPA
+17. Transcripts
+18. SIWES and Projects
+19. Finance and Payments
+20. Scholarships
+21. Library
+22. Hostel
+23. Student Affairs
+24. Research and Postgraduate
+25. Reports and Analytics
+26. Announcements
+27. Audit Logs
+28. Integrations
+29. Academic Settings
+30. University Settings
+31. Backup and Maintenance
+
+Every menu item must open a functional page. If a feature is not yet implemented, clearly label it as pending rather than pretending it works.
+
+7. TECHNICAL AND DATABASE REQUIREMENTS
+
+Use the existing project's supported stack. If a new architecture is required, use:
+
+- Frontend: React, TypeScript, Tailwind CSS, responsive reusable components.
+- Backend: Node.js and Express.js REST API.
+- Database: PostgreSQL with Prisma ORM.
+- Authentication: secure session or token-based authentication.
+- Validation: server-side schemas.
+- Reporting: PDF and CSV export, plus Excel export where supported.
+- File storage: secure object storage or a suitable configured alternative.
+
+Keep the frontend, backend, and Admin dashboard in clearly organized folders.
+
+Include appropriate database models for:
+
+- Universities and campuses.
+- Users, roles, and permissions.
+- Staff profiles.
+- Applicants and applications.
+- Students and enrolments.
+- Faculties and departments.
+- Programmes and curricula.
+- Academic sessions and semesters.
+- Courses and prerequisites.
+- Course registrations.
+- Assessments and examination results.
+- Grading rules, GPA, and CGPA records.
+- Invoices, payments, receipts, and scholarships.
+- Transcripts and graduation clearance.
+- Library and hostel operations.
+- Projects, SIWES, and research.
+- Notifications and support tickets.
+- Audit logs and system settings.
+
+Use proper relationships, constraints, migrations, indexes, and transaction-safe financial workflows.
+
+8. SECURITY, PRIVACY, AND AUDITING
+
+- Enforce all permissions on the backend.
+- Validate ownership and scope for every record request.
+- Prevent users from accessing another user's private records.
+- Prevent public users from granting themselves privileged roles.
+- Hash passwords securely.
+- Protect authentication endpoints with rate limiting.
+- Store API keys and secrets in environment variables.
+- Validate uploaded files.
+- Protect financial and academic records.
+- Log important actions, approvals, exports, and corrections.
+- Implement database backup and restoration procedures.
+- Do not permanently erase important academic or financial history through ordinary delete actions.
+- Apply appropriate privacy safeguards to student and staff information.
+
+9. ACCEPTANCE TESTS
+
+Verify these workflows before declaring the application complete:
+
+1. Admin can securely log in and access all authorized modules.
+2. Public users can register only as non-admin roles.
+3. Existing users can log in through the correct login flow.
+4. Staff accounts require appropriate approval before privileged access.
+5. Applicants can submit and track applications.
+6. Approved applicants can be converted into student records.
+7. Students can register for eligible courses.
+8. Lecturers can submit scores only for assigned courses.
+9. Authorized reviewers can approve and publish results.
+10. GPA and CGPA calculations follow the configured institutional rules.
+11. Students can request transcripts without modifying official records.
+12. Financial payments are verified and cannot be processed twice.
+13. Faculty and departmental users cannot access unrelated departments.
+14. Parents can view only authorized linked student information.
+15. Admin actions are logged and sensitive changes are auditable.
+16. The interface works on mobile, tablet, and desktop.
+17. No critical menu item is broken or falsely marked as functional.
+
+FINAL DELIVERY
+
+Deliver a complete University Management System, not merely a school dashboard or a collection of static pages.
+
+Start by inspecting the existing project, identifying reusable modules, planning the database changes, and implementing the system in manageable phases. Preserve working features, explain required external credentials, provide setup instructions, and test each major workflow before proceeding.

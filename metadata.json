@@ -1,0 +1,6 @@
+{
+  "name": "EduNaija - Nigerian School Management System",
+  "description": "Comprehensive, modern SaaS school management system for Nigerian primary and secondary schools featuring student admissions, fee tracking, Nigerian CA and exams grading, report cards, attendance, and role-based portals.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
